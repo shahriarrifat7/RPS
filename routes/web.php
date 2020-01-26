@@ -20,11 +20,11 @@ Route::get('/login', 'LoginController@index')->name('login');
 
 //Route::get('/marks/section', 'MarksInputController@index')->name('marks_input');
 
-//Route::get('/marks/ct', 'CtMarksInputController@index')->name('ct_marks_input');
+//
 
 //Route::get('/result/course', 'CourseResultController@index')->name('ct_marks_input');
 
-Route::get('/coding', 'ExamPaperCodingController@index')->name('exampaper_coding');
+//Route::get('/coding', 'ExamPaperCodingController@index')->name('exampaper_coding');
 
 Route::get('/assign/course', 'AssignCourseController@index')->name('assign_course');
 
@@ -45,4 +45,5 @@ Route::get('/coding/paper', 'StudentPaperCodingController@sp_coding')->name('stu
 
 //Marks
 Route::get('/marks/paper', 'MarksInputController@mark_in')->name('marks_input');
+Route::get('/marks/ct', 'CtMarksInputController@ctm')->name('ct_marks');
 

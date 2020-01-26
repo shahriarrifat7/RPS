@@ -51,7 +51,7 @@
             var divtest = document.createElement("div");
             divtest.setAttribute("class", "form-group row removeclass"+room);
             var rdiv = 'removeclass'+room;
-            divtest.innerHTML = '<label class="col-md-1 col-form-label text-md-right"></label><div class="col-sm-6 nopadding"><div class="form-group"><input type="text" class="form-control" id="course_name" name="course_name[]" value="" placeholder="course_name"></div></div><div class="col-sm-2 nopadding"><div class="form-group"><input type="text" class="form-control" id="course_code" name="course_code[]" value="" placeholder="course_code"></div></div><div class="col-sm-2 nopadding"><div class="form-group"> <input type="text" class="form-control" id="course_credits" name="course_credits[]" value="" placeholder="course_credits"></div></div><div><div class="input-group-btn"><button class="btn btn-danger" type="button"  onclick="remove_course_fields('+ room +');"> <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span> </button></div></div>';
+            divtest.innerHTML = '<label class="col-md-1 col-form-label text-md-right"></label><div class="col-sm-2 nopadding"><div class="form-group"><input type="text" class="form-control" id="student_id" name="student_id[]" value="" placeholder="student_id"></div></div><div class="col-sm-2 nopadding"><div class="form-group"><input type="text" class="form-control" id="ct_marks" name="ct_marks[]" value="" placeholder="ct_marks"></div></div><div class="col-sm-2 nopadding"><div class="form-group"> <input type="text" class="form-control" id="attendance" name="attendance[]" value="" placeholder="attendance"></div></div><div class="col-sm-2 nopadding"><div class="form-group"> <input type="text" class="form-control" id="total" name="total[]" value="" placeholder="total"></div></div><div><div class="input-group-btn"><button class="btn btn-danger" type="button"  onclick="remove_course_fields('+ room +');"> <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span> </button></div></div>';
                                      
             objTo.appendChild(divtest);
         }
@@ -63,7 +63,7 @@
         <div class="row justify-content-center">
             <div class="col-md-11">
                     <div class="card">
-                        <div class="card-header">Exam Registration Form</div>
+                        <div class="card-header">Student Paper Coding Form</div>
                         <div class="card-body">
                             <form  action="{{url('/exam_registration')}}" enctype = "multipart/form-data" method="POST">
                             {{ csrf_field() }}
@@ -73,90 +73,97 @@
                                         <input type="text" id="exam_name" class="form-control" name="exam_name">
                                     </div>
                                 </div>
- 
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label text-md-right">Course Title</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="course_title" class="form-control" name="course_title">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label text-md-right">Course Code</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="course_code" class="form-control" name="course_code">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label text-md-right">Section</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="section" class="form-control" name="section">
+                                    </div>
+                                </div>
+ <!--  
 								<div class="form-group row">
-                                    <label class="col-md-4 col-form-label text-md-right">Course Semester</label>
+                                    <label class="col-md-4 col-form-label text-md-right">Session</label>
                                     <div class="col-md-6">
                                         <div class="form-check form-check-inline">
-                							<input class="form-check-input" type="radio" name="course_semester" id="course_semester" value="1st Semester">
-                							<label class="form-check-label" for="inlineRadio1">1st Semester</label>
+                							<input class="form-check-input" type="radio" name="course_session" id="course_session" value="2019-2020">
+                							<label class="form-check-label" for="inlineRadio1">2019-2020</label>
                 						</div>
                 						<div class="form-check form-check-inline">
-                							<input class="form-check-input" type="radio" name="course_semester" id="course_semester" value="2nd Semester">
-                							<label class="form-check-label" for="inlineRadio2">2nd Semester</label>
+                							<input class="form-check-input" type="radio" name="course_session" id="course_session" value="2019-2020">
+                							<label class="form-check-label" for="inlineRadio2">2019-2020</label>
                 						</div>
 										<div class="form-check form-check-inline">
-                							<input class="form-check-input" type="radio" name="course_semester" id="course_semester" value="3rd Semester">
-                							<label class="form-check-label" for="inlineRadio1">3rd Semester</label>
+                							<input class="form-check-input" type="radio" name="course_session" id="course_session" value="2019-2020">
+                							<label class="form-check-label" for="inlineRadio1">2019-2020</label>
                 						</div>
                 						<div class="form-check form-check-inline">
-                							<input class="form-check-input" type="radio" name="course_semester" id="course_semester" value="4th Semester">
-                							<label class="form-check-label" for="inlineRadio2">4th Semester</label>
+                							<input class="form-check-input" type="radio" name="course_session" id="course_session" value="2019-2020">
+                							<label class="form-check-label" for="inlineRadio2">2019-2020</label>
                 						</div>
 					
 										<div class="form-check form-check-inline">
-                							<input class="form-check-input" type="radio" name="course_semester" id="course_semester" value="5th Semester">
-                							<label class="form-check-label" for="inlineRadio1">5th Semester</label>
+                							<input class="form-check-input" type="radio" name="course_session" id="course_session" value="2019-2020">
+                							<label class="form-check-label" for="inlineRadio1">2019-2020</label>
                 						</div>
                 						<div class="form-check form-check-inline">
-                							<input class="form-check-input" type="radio" name="course_semester" id="course_semester" value="6th Semester">
-                							<label class="form-check-label" for="inlineRadio2">6th Semester</label>
+                							<input class="form-check-input" type="radio" name="course_session" id="course_session" value="2019-2020">
+                							<label class="form-check-label" for="inlineRadio2">2019-2020</label>
                 						</div>
 
 										<div class="form-check form-check-inline">
-                							<input class="form-check-input" type="radio" name="course_semester" id="course_semester" value="7th Semester">
-                							<label class="form-check-label" for="inlineRadio1">7th Semester</label>
+                							<input class="form-check-input" type="radio" name="course_session" id="course_session" value="2019-2020">
+                							<label class="form-check-label" for="inlineRadio1">2019-2020</label>
                 						</div>
                 						<div class="form-check form-check-inline">
-                							<input class="form-check-input" type="radio" name="course_semester" id="course_semester" value="8th Semester">
-                							<label class="form-check-label" for="inlineRadio2">8th Semester</label>
+                							<input class="form-check-input" type="radio" name="course_session" id="course_session" value="2019-2020">
+                							<label class="form-check-label" for="inlineRadio2">2019-2020</label>
                 						</div>
                                     </div>
                                 </div>
 
-                                <div class="form-group row">
-                                    <label class="col-md-4 col-form-label text-md-right">Exam Starting Date</label>
-                                    <div class="col-md-6">
-                                        <input autocomplete="off" name="starting_date" class="date form-control" type="text" placeholder=" Begining Date">
-                                        <script type="text/javascript">                
-                                        $('.date').datepicker({                
-                                        format: 'yyyy-mm-dd'
-                                         });  
-                                        </script>
-                                    </div>
-                                </div>
+                                -->
                                 
-                                <div class="form-group row">
-                                    <label  class="col-md-4 col-form-label text-md-right">Exam Ending Date</label>
-                                    <div class="col-md-6">
-                                            <input autocomplete="off" name="ending_date" class="date form-control" type="text" placeholder="Ending Date">
-                                            <script type="text/javascript">                
-                                            $('.date').datepicker({                
-                                            format: 'yyyy-mm-dd'
-                                             });  
-                                            </script>
-                                    </div>
-                                </div>
+                               
 
 
  								<div id="course_fields">
  								<div class="form-group row">
-                                    <label class="col-md-1 col-form-label text-md-right">Courses</label>
-				                    <div class="col-sm-6 nopadding">
-                      				    <div class="form-group">
-                        				    <input type="text" class="form-control" id="course_name" name="course_name[]" value="" placeholder="course_name">
-                      				    </div>
-				                    </div>
+                                    <label class="col-md-1 col-form-label text-md-right">CTM</label>
 				                    <div class="col-sm-2 nopadding">
                       				    <div class="form-group">
-                        				    <input type="text" class="form-control" id="course_code" name="course_code[]" value="" placeholder="course_code">
+                        				    <input type="text" class="form-control" id="student_id" name="student_id[]" value="" placeholder="student_id">
                       				    </div>
 				                    </div>
+				                    
 				                    <div class="col-sm-2 nopadding">
                       				    <div class="form-group">
-                        				    <input type="text" class="form-control" id="course_credits" name="course_credits[]" value="" placeholder="course_credits">
-                                        </div>
+                        				    <input type="text" class="form-control" id="ct_marks" name="ct_marks[]" value="" placeholder="ct_marks">
+                      				    </div>
 				                    </div>
+				                    
+				                    <div class="col-sm-2 nopadding">
+                      				    <div class="form-group">
+                        				    <input type="text" class="form-control" id="attendance" name="attendance[]" value="" placeholder="attendance">
+                      				    </div>
+				                    </div>
+				                    
+				                    <div class="col-sm-2 nopadding">
+                      				    <div class="form-group">
+                        				    <input type="text" class="form-control" id="total" name="total[]" value="" placeholder="total">
+                      				    </div>
+				                    </div>
+				                    
                                     <div>
                                         <div class="input-group-btn">
                                              <button class="btn btn-success" type="button"  onclick="course_fields();"> <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> </button>
@@ -178,7 +185,6 @@
     </div>
  
 </main>
-
 
 
   

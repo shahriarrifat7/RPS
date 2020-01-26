@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class CtMarksInputController extends Controller
 {
-    public function index() {
-        return view('ct_marks_input');
+    public function ctm() {
+        return view('marks.ct_marks');
     }
 }
