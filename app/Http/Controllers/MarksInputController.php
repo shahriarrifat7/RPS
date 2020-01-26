@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class MarksInputController extends Controller
 {
-    public function index() {
-        return view('marks_input');
+    public function mark_in() {
+        return view('marks.marks_input');
     }
 }

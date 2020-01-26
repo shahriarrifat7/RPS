@@ -18,11 +18,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/login', 'LoginController@index')->name('login');
 
-Route::get('/marks/section', 'MarksInputController@index')->name('marks_input');
+//Route::get('/marks/section', 'MarksInputController@index')->name('marks_input');
 
-Route::get('/marks/ct', 'CtMarksInputController@index')->name('ct_marks_input');
+//Route::get('/marks/ct', 'CtMarksInputController@index')->name('ct_marks_input');
 
-Route::get('/result/course', 'CourseResultController@index')->name('ct_marks_input');
+//Route::get('/result/course', 'CourseResultController@index')->name('ct_marks_input');
 
 Route::get('/coding', 'ExamPaperCodingController@index')->name('exampaper_coding');
 
@@ -41,4 +41,8 @@ Route::post('/course_registration','CourseRegController@regis');
 Route::get('/exam/reg', 'ExamRegController@reg')->name('exam_reg');
 
 //paper coding
-Route::get('/exam/coding/paper', 'StudentPaperCodingController@sp_coding')->name('student_paper_coding');
+Route::get('/coding/paper', 'StudentPaperCodingController@sp_coding')->name('student_paper_coding');
+
+//Marks
+Route::get('/marks/paper', 'MarksInputController@mark_in')->name('marks_input');
+
