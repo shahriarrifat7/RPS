@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<meta name="_token" content="{{ csrf_token() }}">
+	<meta name="_token" content="<?php echo e(csrf_token()); ?>">
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
@@ -54,8 +54,9 @@
                     <div class="card">
                         <div class="card-header">Student Paper Coding Form</div>
                         <div class="card-body">
-                            <form  action="{{url('/exam_paper_encoding')}}" enctype = "multipart/form-data" method="POST">
-                            {{ csrf_field() }}
+                            <form  action="<?php echo e(url('/exam_paper_encoding')); ?>" enctype = "multipart/form-data" method="POST">
+                            <?php echo e(csrf_field()); ?>
+
                                 <div class="form-group row">
                                     <label for="year" class="col-md-4 col-form-label text-md-right">Year</label>
                                     <div class="col-md-6">
@@ -64,9 +65,9 @@
                                             $var=date("Y");
 
                                         ?>
-                                        @for ($i = $var ; $i > $var-6; $i--)
-                                            <option>{{$i}}</option>
-                                        @endfor
+                                        <?php for($i = $var ; $i > $var-6; $i--): ?>
+                                            <option><?php echo e($i); ?></option>
+                                        <?php endfor; ?>
         								
                                       	</select>
                                     </div>
@@ -163,7 +164,7 @@
 			$.ajax({
 
 				type : 'get',
-				url : '{{URL::to('/coding/paper/exam/')}}',
+				url : '<?php echo e(URL::to('/coding/paper/exam/')); ?>',
 				data:{'year':$value},
 
 				success:function(data){
@@ -189,7 +190,7 @@
 			$.ajax({
 
 				type : 'get',
-				url : '{{URL::to('/coding/paper/course/')}}',
+				url : '<?php echo e(URL::to('/coding/paper/course/')); ?>',
 				data:{'exam_name':$value},
 
 				success:function(data){
@@ -215,7 +216,7 @@
 		// 	$.ajax({
 
 		// 		type : 'get',
-		// 		url : '{{URL::to('/coding/paper/course/')}}',
+		// 		url : '<?php echo e(URL::to('/coding/paper/course/')); ?>',
 		// 		data:{'course_title':$value,''},
 
 		// 		success:function(data){
@@ -238,7 +239,7 @@
 
 	<script type="text/javascript">
 
-		$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+		$.ajaxSetup({ headers: { 'csrftoken' : '<?php echo e(csrf_token()); ?>' } });
 
 	</script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -246,4 +247,4 @@
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
 </body>
-</html>
+</html><?php /**PATH /home/sr7/Desktop/my_blog2/resources/views/exam/student_paper_coding.blade.php ENDPATH**/ ?>

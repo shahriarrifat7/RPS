@@ -18,15 +18,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/login', 'LoginController@index')->name('login');
 
-//Route::get('/marks/section', 'MarksInputController@index')->name('marks_input');
-
-//
-
-//Route::get('/result/course', 'CourseResultController@index')->name('ct_marks_input');
-
-//Route::get('/coding', 'ExamPaperCodingController@index')->name('exampaper_coding');
 
 Route::get('/assign/course', 'AssignCourseController@index')->name('assign_course');
+
+
+
+//Student
+
+Route::get('/student/reg', 'StudentRegController@reg')->name('student_reg');
+Route::post('/student_registration', 'StudentRegController@registration');
 
 //teacher
 
@@ -39,11 +39,30 @@ Route::post('/course_registration','CourseRegController@regis');
 
 //Exam
 Route::get('/exam/reg', 'ExamRegController@reg')->name('exam_reg');
+Route::post('/exam/exam_registration', 'ExamRegController@registration');
+Route::get('/exam/course/', 'ExamRegController@searchCourse');
 
 //paper coding
 Route::get('/coding/paper', 'StudentPaperCodingController@sp_coding')->name('student_paper_coding');
+Route::get('/coding/paper/exam/', 'StudentPaperCodingController@searchExam')->name('searchExam');
+Route::get('/coding/paper/course/', 'StudentPaperCodingController@searchCourse')->name('searchCourse');
+
+Route::post('/exam_paper_encoding', 'StudentPaperCodingController@examPaperEncoding');
 
 //Marks
 Route::get('/marks/paper', 'MarksInputController@mark_in')->name('marks_input');
 Route::get('/marks/ct', 'CtMarksInputController@ctm')->name('ct_marks');
+
+
+//test views
+Route::get('/testing/spc', 'StudentPaperCodingController@spc_test')->name('spc');
+Route::get('/testing/mit', 'MarksInputController@mark_in_test')->name('marks_input');
+
+
+
+
+
+
+
+
 

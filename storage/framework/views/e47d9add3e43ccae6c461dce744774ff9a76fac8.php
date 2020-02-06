@@ -41,15 +41,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>  
  
 
-@yield('title')
+<?php echo $__env->yieldContent('title'); ?>
 
 </head>
 <body>
-@include('includes.nav')
-@yield('form')
+<?php echo $__env->make('includes.nav', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->yieldContent('form'); ?>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </body>
 </html>
+<?php /**PATH /home/sr7/Desktop/my_blog2/resources/views/master/form_master.blade.php ENDPATH**/ ?>
