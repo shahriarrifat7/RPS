@@ -6,6 +6,7 @@ use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use function Opis\Closure\unserialize;
+use App\Coding;
 
 class StudentPaperCodingController extends Controller
 {
@@ -17,6 +18,21 @@ class StudentPaperCodingController extends Controller
     public function spc_test() {
         
         return view('test.spc');
+    }
+    
+    public function registration(Request $request){
+        $coding = new Coding();
+        $coding->exam_year=$request->year;
+        $coding->exam_name=$request->exam_name;
+        $coding->course_code=$request->course_title;
+        $coding->course_title=String::substr($request->course_title, 7);
+        $coding->section=$request->section;
+        $coding->student_id=serialize($request->student_id);
+        $coding->paper_code=serialize($request->paper_code);
+        
+        $coding->save();
+        //         return $request->course_names;
+        return redirect("/coding/paper")->with('message','success');
     }
     
     public function searchExam(Request $request) {

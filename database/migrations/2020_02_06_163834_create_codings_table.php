@@ -15,7 +15,13 @@ class CreateCodingsTable extends Migration
     {
         Schema::create('codings', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->
+            $table->String('exam_year',4);
+            $table->String('exam_name',70);
+            $table->String('course_code',7);
+            $table->String('course_title',70);
+            $table->String('section',1);
+            $table->String('student_id',8);
+            $table->String('paper_code',10);
             $table->timestamps();
         });
     }

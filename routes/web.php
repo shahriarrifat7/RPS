@@ -47,7 +47,7 @@ Route::get('/coding/paper', 'StudentPaperCodingController@sp_coding')->name('stu
 Route::get('/coding/paper/exam/', 'StudentPaperCodingController@searchExam')->name('searchExam');
 Route::get('/coding/paper/course/', 'StudentPaperCodingController@searchCourse')->name('searchCourse');
 
-Route::post('/exam_paper_encoding', 'StudentPaperCodingController@examPaperEncoding');
+Route::post('/exam_paper_encoding', 'StudentPaperCodingController@registration');
 
 //Marks
 Route::get('/marks/paper', 'MarksInputController@mark_in')->name('marks_input');
