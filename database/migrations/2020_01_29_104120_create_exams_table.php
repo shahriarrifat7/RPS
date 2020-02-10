@@ -17,10 +17,10 @@ class CreateExamsTable extends Migration
         Schema::create('exams', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->String("name",80);
-            $table->integer("year",4);
+            $table->integer("year");
             $table->String("semester",20);
             $table->String("type",12);
-            $table->String("improvement_year",4);
+            $table->String("improvement_year",4)->default(null);
             $table->Date("start_date");
             $table->Date("end_date");
             $table->text("course_names");

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCodingsTable extends Migration
+class CreatePapermarksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateCodingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('codings', function (Blueprint $table) {
+        Schema::create('papermarks', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->String('exam_year',4);
             $table->String('exam_name',70);
-            $table->String('course_code',70);
+            $table->String('course_code',10);
             $table->String('course_title',70);
             $table->String('section',1);
-            $table->text('student_id');
             $table->text('paper_code');
+            $table->text('marks');
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ class CreateCodingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('codings');
+        Schema::dropIfExists('papermarks');
     }
 }

@@ -1,0 +1,1 @@
+<?php echo e($arr[0][1]); ?><?php /**PATH /home/sr7/Desktop/my_blog2/resources/views/marks/result.blade.php ENDPATH**/ ?>

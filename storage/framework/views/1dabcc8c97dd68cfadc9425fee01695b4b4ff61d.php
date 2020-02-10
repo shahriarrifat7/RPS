@@ -1,10 +1,29 @@
-<?php $__env->startSection('title'); ?>
 
-<title>Marks Input</title>
-<?php $__env->stopSection(); ?>
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<meta name="_token" content="<?php echo e(csrf_token()); ?>">
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+    <link rel="icon" href="Favicon.png">
 
-<?php $__env->startSection('form'); ?>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
 
+
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>  
+   
+    <title>Marks Input Page</title>
+</head>
+<body>
 
 
 
@@ -18,7 +37,7 @@
             var divtest = document.createElement("div");
             divtest.setAttribute("class", "form-group row removeclass"+room);
             var rdiv = 'removeclass'+room;
-            divtest.innerHTML = '<label class="col-md-3 col-form-label text-md-right"></label><div class="col-sm-4 nopadding"><div class="form-group"><input type="text" class="form-control" id="paper_code" name="paper_code[]" value="" placeholder="paper_code"></div></div><div class="col-sm-4 nopadding"><div class="form-group"><input type="text" class="form-control" id="marks" name="marks[]" value="" placeholder="marks"></div></div><div><div class="input-group-btn"><button class="btn btn-danger" type="button"  onclick="remove_course_fields('+ room +');"> <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span> </button></div></div>';
+            divtest.innerHTML = '<label class="col-md-1 col-form-label text-md-right"></label><div class="col-sm-2 nopadding"><div class="form-group"><input type="text" class="form-control" id="paper_code" name="paper_code[]" value="" placeholder="paper_code"></div></div><div class="col-sm-6 nopadding"><div class="form-group"><input type="text" class="form-control" id="marks" name="marks[]" value="" placeholder="marks"></div></div><div><div class="input-group-btn"><button class="btn btn-danger" type="button"  onclick="remove_course_fields('+ room +');"> <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span> </button></div></div>';
                                      
             objTo.appendChild(divtest);
         }
@@ -33,13 +52,13 @@
         <div class="row justify-content-center">
             <div class="col-md-11">
                     <div class="card">
-                        <div class="card-header">Student Paper Coding Form</div>
+                        <div class="card-header">Marks Input Form</div>
                         <div class="card-body">
-                            <form  action="<?php echo e(url('/testing_mit')); ?>" enctype = "multipart/form-data" method="POST">
+                            <form  action="<?php echo e(url('/exam_paper_marks')); ?>" enctype = "multipart/form-data" method="POST">
                             <?php echo e(csrf_field()); ?>
 
                                 <div class="form-group row">
-                                    <label for="year" class="col-md-4 col-form-label text-md-right">Year</label>
+                                    <label for="year" class="col-md-4 col-form-label text-md-right">Examination Year</label>
                                     <div class="col-md-6">
                                     	<select id="year"  name="year" class="selectpicker show-tick" data-size="5">
                                         <?php
@@ -56,32 +75,33 @@
                                 </div>
 
 
- 
-                               <div class="form-group row">
-                                    <label for="exam_name" class="col-md-4 col-form-label text-md-right">Exam Name</label>
+
+                                <div class="form-group row">
+                                    <label for="user_name" class="col-md-4 col-form-label text-md-right">Exam Name</label>
                                     <div class="col-md-6">
+
                                     	<select id="exam_name"  name="exam_name" class="selectpicker show-tick" data-size="10">
-	    									<optgroup label="Exam Name">
+	    									<!-- <optgroup label="Exam Name">
+ -->
                                       	</select>
+                                   
                                     </div>
+									
                                 </div>
                                 <div class="form-group row">
-                                    <label for="course_title" class="col-md-4 col-form-label text-md-right">Course title</label>
+                                    <label class="col-md-4 col-form-label text-md-right">Course Title</label>
                                     <div class="col-md-6">
                                     	<select id="course_title"  name="course_title" class="selectpicker show-tick" data-size="10">
-	    									<optgroup label="Course Title">
                                       	</select>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="course_code" class="col-md-4 col-form-label text-md-right">Course Code</label>
+<!--                                 <div class="form-group row">
+                                    <label class="col-md-4 col-form-label text-md-right">Course Code</label>
                                     <div class="col-md-6">
-                                    	<select id="course_code"  name="course_code" class="selectpicker show-tick" data-size="10">
-	    									<optgroup label="Course Code">
-                                      	</select>
-                                    </div>
-                                </div>
+                                        <input autocomplete="off"  type="text" id="course_code" class="form-control" name="course_code">
 
+                                    </div>
+                                </div> -->
  								<div class="form-group row">
                                     <label class="col-md-4 col-form-label text-md-right">Section</label>
                                     <div class="col-md-6">
@@ -97,16 +117,16 @@
                                     </div>
                                 </div>
                                 
-                                
  								<div id="course_fields">
  								<div class="form-group row">
-                                    <label class="col-md-3 col-form-label text-md-right">Input Marks</label>
-				                    <div class="col-sm-4 nopadding">
+                                    <label class="col-md-1 col-form-label text-md-right">Input Marks</label>
+				                    
+				                    <div class="col-sm-2 nopadding">
                       				    <div class="form-group">
                         				    <input type="text" class="form-control" id="paper_code" name="paper_code[]" value="" placeholder="paper_code">
                       				    </div>
 				                    </div>
-				                    <div class="col-sm-4 nopadding">
+				                    <div class="col-sm-6 nopadding">
                       				    <div class="form-group">
                         				    <input type="text" class="form-control" id="marks" name="marks[]" value="" placeholder="marks">
                       				    </div>
@@ -135,5 +155,97 @@
 
 </main>
 
-<?php $__env->stopSection(); ?>
-<?php echo $__env->make('master.form_master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/sr7/Desktop/my_blog2/resources/views/test/marks_input.blade.php ENDPATH**/ ?>
+	<script type="text/javascript">
+
+		$('#year').on('click',function(){
+
+			$value=null;
+			$value=$(this).val();
+
+			$.ajax({
+
+				type : 'get',
+				url : '<?php echo e(URL::to('/marks/paper/exam/')); ?>',
+				data:{'year':$value},
+
+				success:function(data){
+					console.log(data)
+		            var objTo = document.getElementById('exam_name');
+			        var divtest = document.createElement("optgroup");
+			        divtest.label="Select Exam";
+			        divtest.innerHTML = data;
+			       	var child=objTo.lastElementChild;
+			        while (child) { 
+           				objTo.removeChild(child); 
+            			child = objTo.lastElementChild; 
+        			} 
+		            objTo.appendChild(divtest);
+				}
+			});
+		})
+		$('#exam_name').on('click',function(){
+
+			$value=null;
+			$value=$(this).val();
+
+			$.ajax({
+
+				type : 'get',
+				url : '<?php echo e(URL::to('/marks/paper/course/')); ?>',
+				data:{'exam_name':$value},
+
+				success:function(data){
+					console.log(data)
+		            var objTo = document.getElementById('course_title');
+			        var divtest = document.createElement("optgroup");
+			        divtest.label="Select Course";
+			        divtest.innerHTML = data;
+			       	var child=objTo.lastElementChild;
+			        while (child) { 
+           				objTo.removeChild(child); 
+            			child = objTo.lastElementChild; 
+        			} 
+		            objTo.appendChild(divtest);
+				}
+			});
+		})
+		// $('#course_title').on('click',function(){
+
+		// 	$value=null;
+		// 	$value=$(this).val();
+
+		// 	$.ajax({
+
+		// 		type : 'get',
+		// 		url : '<?php echo e(URL::to('/coding/paper/course/')); ?>',
+		// 		data:{'course_title':$value,''},
+
+		// 		success:function(data){
+		// 			console.log(data)
+		//             var objTo = document.getElementById('course_code');
+		// 	        var divtest = document.createElement("input");
+		// 	        divtest.innerHTML = data;
+		// 	       	var child=objTo.lastElementChild;
+		// 	        while (child) { 
+  //          				objTo.removeChild(child); 
+  //           			child = objTo.lastElementChild; 
+  //       			} 
+		//             objTo.appendChild(divtest);
+		// 		}
+		// 	});
+		// })
+	</script>
+
+
+
+	<script type="text/javascript">
+
+		$.ajaxSetup({ headers: { 'csrftoken' : '<?php echo e(csrf_token()); ?>' } });
+
+	</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+</body>
+</html><?php /**PATH /home/sr7/Desktop/my_blog2/resources/views/test/marks_input.blade.php ENDPATH**/ ?>

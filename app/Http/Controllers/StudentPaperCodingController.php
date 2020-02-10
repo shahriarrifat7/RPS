@@ -24,8 +24,9 @@ class StudentPaperCodingController extends Controller
         $coding = new Coding();
         $coding->exam_year=$request->year;
         $coding->exam_name=$request->exam_name;
-        $coding->course_code=$request->course_title;
-        $coding->course_title=String::substr($request->course_title, 7);
+     //   $temp = $request->course_title;
+        $coding->course_code=substr($request->course_title,0,7);
+        $coding->course_title=substr($request->course_title,7);
         $coding->section=$request->section;
         $coding->student_id=serialize($request->student_id);
         $coding->paper_code=serialize($request->paper_code);

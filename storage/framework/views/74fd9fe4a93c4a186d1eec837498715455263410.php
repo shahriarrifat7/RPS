@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<meta name="_token" content="{{ csrf_token() }}">
+	<meta name="_token" content="<?php echo e(csrf_token()); ?>">
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
@@ -37,8 +37,8 @@
             var divtest = document.createElement("div");
             divtest.setAttribute("class", "form-group row removeclass"+room);
             var rdiv = 'removeclass'+room;
-            divtest.innerHTML = '<label class="col-md-1 col-form-label text-md-right"></label><div class="col-sm-2 nopadding"><div class="form-group"><input type="text" class="form-control" id="paper_code" name="paper_code[]" value="" placeholder="paper_code"></div></div><div class="col-sm-6 nopadding"><div class="form-group"><input type="text" class="form-control" id="marks" name="marks[]" value="" placeholder="marks"></div></div><div><div class="input-group-btn"><button class="btn btn-danger" type="button"  onclick="remove_course_fields('+ room +');"> <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span> </button></div></div>';
-                                     
+            divtest.innerHTML = '<label class="col-md-1 col-form-label text-md-right"></label><div class="col-sm-2 nopadding"><div class="form-group"><input type="text" class="form-control" id="student_id" name="student_id[]" value="" placeholder="student_id"></div></div><div class="col-sm-2 nopadding"><div class="form-group"><input type="text" class="form-control" id="ct_marks" name="ct_marks[]" value="" placeholder="ct_marks"></div></div><div class="col-sm-2 nopadding"><div class="form-group"> <input type="text" class="form-control" id="attendance" name="attendance[]" value="" placeholder="attendance"></div></div><div class="col-sm-2 nopadding"><div class="form-group"> <input type="text" class="form-control" id="total" name="total[]" value="" placeholder="total"></div></div><div><div class="input-group-btn"><button class="btn btn-danger" type="button"  onclick="remove_course_fields('+ room +');"> <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span> </button></div></div>';
+            
             objTo.appendChild(divtest);
         }
         function remove_course_fields(rid) {
@@ -54,8 +54,9 @@
                     <div class="card">
                         <div class="card-header">Marks Input Form</div>
                         <div class="card-body">
-                            <form  action="{{url('/exam_paper_marks')}}" enctype = "multipart/form-data" method="POST">
-                            {{ csrf_field() }}
+                            <form  action="<?php echo e(url('/ctmarks')); ?>" enctype = "multipart/form-data" method="POST">
+                            <?php echo e(csrf_field()); ?>
+
                                 <div class="form-group row">
                                     <label for="year" class="col-md-4 col-form-label text-md-right">Examination Year</label>
                                     <div class="col-md-6">
@@ -64,9 +65,9 @@
                                             $var=date("Y");
 
                                         ?>
-                                        @for ($i = $var ; $i > $var-6; $i--)
-                                            <option>{{$i}}</option>
-                                        @endfor
+                                        <?php for($i = $var ; $i > $var-6; $i--): ?>
+                                            <option><?php echo e($i); ?></option>
+                                        <?php endfor; ?>
         								
                                       	</select>
                                     </div>
@@ -101,33 +102,32 @@
 
                                     </div>
                                 </div> -->
- 								<div class="form-group row">
-                                    <label class="col-md-4 col-form-label text-md-right">Section</label>
-                                    <div class="col-md-6">
-                                        <div class="form-check form-check-inline">
-                							<input class="form-check-input" type="radio" name="section" id="section" value="A">
-                							<label class="form-check-label" for="inlineRadio1">Section A</label>
-                						</div>
-                						<div class="form-check form-check-inline">
-                							<input class="form-check-input" type="radio" name="section" id="section" value="B">
-                							<label class="form-check-label" for="inlineRadio2">Section B</label>
-                						</div>
-										
-                                    </div>
-                                </div>
+ 								
                                 
  								<div id="course_fields">
  								<div class="form-group row">
-                                    <label class="col-md-1 col-form-label text-md-right">Input Marks</label>
+                                    <label class="col-md-1 col-form-label text-md-right">CTM</label>
+				                    <div class="col-sm-2 nopadding">
+                      				    <div class="form-group">
+                        				    <input type="text" class="form-control" id="student_id" name="student_id[]" value="" placeholder="student_id">
+                      				    </div>
+				                    </div>
 				                    
 				                    <div class="col-sm-2 nopadding">
                       				    <div class="form-group">
-                        				    <input type="text" class="form-control" id="paper_code" name="paper_code[]" value="" placeholder="paper_code">
+                        				    <input type="text" class="form-control" id="ct_marks" name="ct_marks[]" value="" placeholder="ct_marks">
                       				    </div>
 				                    </div>
-				                    <div class="col-sm-6 nopadding">
+				                    
+				                    <div class="col-sm-2 nopadding">
                       				    <div class="form-group">
-                        				    <input type="text" class="form-control" id="marks" name="marks[]" value="" placeholder="marks">
+                        				    <input type="text" class="form-control" id="attendance" name="attendance[]" value="" placeholder="attendance">
+                      				    </div>
+				                    </div>
+				                    
+				                    <div class="col-sm-2 nopadding">
+                      				    <div class="form-group">
+                        				    <input type="text" class="form-control" id="total" name="total[]" value="" placeholder="total">
                       				    </div>
 				                    </div>
 				                    
@@ -138,6 +138,7 @@
                                     </div>
                                 </div>
                                 </div>
+                                
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
@@ -164,7 +165,7 @@
 			$.ajax({
 
 				type : 'get',
-				url : '{{URL::to('/marks/paper/exam/')}}',
+				url : '<?php echo e(URL::to('/marks/ct/exam/')); ?>',
 				data:{'year':$value},
 
 				success:function(data){
@@ -190,7 +191,7 @@
 			$.ajax({
 
 				type : 'get',
-				url : '{{URL::to('/marks/paper/course/')}}',
+				url : '<?php echo e(URL::to('/marks/ct/course/')); ?>',
 				data:{'exam_name':$value},
 
 				success:function(data){
@@ -216,7 +217,7 @@
 		// 	$.ajax({
 
 		// 		type : 'get',
-		// 		url : '{{URL::to('/coding/paper/course/')}}',
+		// 		url : '<?php echo e(URL::to('/coding/paper/course/')); ?>',
 		// 		data:{'course_title':$value,''},
 
 		// 		success:function(data){
@@ -239,7 +240,7 @@
 
 	<script type="text/javascript">
 
-		$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+		$.ajaxSetup({ headers: { 'csrftoken' : '<?php echo e(csrf_token()); ?>' } });
 
 	</script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -247,4 +248,4 @@
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
 </body>
-</html>
+</html><?php /**PATH /home/sr7/Desktop/my_blog2/resources/views/marks/ct_marks.blade.php ENDPATH**/ ?>
