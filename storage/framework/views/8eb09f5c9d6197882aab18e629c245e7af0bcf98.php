@@ -13,3 +13,4 @@
     </div>
     </div>
 </nav>
+<?php /**PATH /home/sr7/Desktop/my_blog2/resources/views/includes/nav.blade.php ENDPATH**/ ?>

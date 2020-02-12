@@ -63,16 +63,19 @@ Route::get('/marks/ct/course/', 'CtMarksInputController@searchCourse')->name('se
 Route::post('//ctmarks', 'CtMarksInputController@registration');
 
 
-//test views
-//Route::get('/testing/spc', 'StudentPaperCodingController@spc_test')->name('spc');
-Route::get('/testing/mit', 'MarksInputController@mark_in_test')->name('marks_input');
-Route::get('/testing/ct', 'CtMarksInputController@ctm_test')->name('ctm');
-
-
 //result page
 Route::get('/result', 'ResultController@res')->name('result');
 Route::get('/demo', 'ResultController@demo')->name('demo');
 
+//result individual
+Route::get('/resultcard/{std_id}/{exam_name}', 'ResultIndividualController@gradesheet')->name('resultindividual');
+Route::get('/resultcard/', 'ResultIndividualController@index')->name('index');
+
+
+//test views
+Route::get('/testing/spc', 'StudentPaperCodingController@spc_test')->name('spc');
+Route::get('/testing/mit', 'MarksInputController@mark_in_test')->name('marks_input');
+Route::get('/testing/ct', 'CtMarksInputController@ctm_test')->name('ctm');
 
 
 
